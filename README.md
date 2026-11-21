@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# Uncharted
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uncharted is a React/TypeScript visualization library built around configurable views and resizable grid layouts. Its published entry point exports `View`, `ViewGrid`, visualization types and related TypeScript interfaces.
 
-## Available Scripts
+This is a component package, not a generic Create React App starter.
 
-In the project directory, you can run:
+## Main pieces
 
-### `npm start`
+- [`src/index.ts`](src/index.ts): public exports.
+- [View component](src/): view rendering and related implementations.
+- [ViewGrid component](src/): grid layout.
+- [`src/api/`](src/api/): API types and generated client code.
+- [`openapi/`](openapi/): API description used for code generation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The code uses React, TypeScript, `react-grid-layout`, `amCharts 5` and Axios. Some component files are under a directory whose first character is a Cyrillic `с` (`src/сomponents`); keep that exact path when navigating imports.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Local development
 
-### `npm test`
+With Node.js and npm installed:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm ci
+npm start
+```
 
-### `npm run build`
+Additional scripts defined in `package.json`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `npm run build`: builds the React app.
+- `npm run rollup`: creates the library bundle using Rollup.
+- `npm run openapi`: regenerates API client code from `openapi/paths/used_api.yaml`.
+- `npm test`: starts the configured test command.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Package publishing is configured for a separate npm registry. Do not assume the package is available from the public npm registry.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Status:** commands and exports are taken from checked-in source and package metadata; execution and publication have not been verified here.
